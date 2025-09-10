@@ -1,4 +1,3 @@
-import numpy as np
 import cubic_solver
 import math
 import cmath
