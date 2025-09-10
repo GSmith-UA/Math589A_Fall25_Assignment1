@@ -109,7 +109,8 @@ def solve_quad(a,b,c):
     if c == 0:
         # We can factor out a zero...
         roots.append(0)
-        roots.append(solve_linear(a,b))
+        linRoots = solve_linear(a,b)
+        roots.append(linRoots[0])
         return roots
     # Now we should have a non-trivial quadratic...
     if a != 1:
