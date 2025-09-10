@@ -41,7 +41,7 @@ def solve_quartic(a, b, c, d, e):
     s = c0 - (1/4)*c3*c1 + (1/16)*(c3**2)*c2 - (3/256)*(c3**4)
 
     # If r is zero then this is actually a quadratic problem...
-    if r ==0:
+    if abs(r) < 1e-6:
         quadRoots = cubic_solver.solve_quad(1,q,s)
         r1 = quadRoots[0]
         r2 = quadRoots[1]
