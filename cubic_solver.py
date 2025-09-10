@@ -26,7 +26,7 @@ def solve_cubic(a, b, c, d):
         # This is really a roots of unity problem...
         c3 = 1
         c0 = d/a
-        print(['VAR is c0 and type is...', type(c0)])
+        #print(['VAR is c0 and type is...', type(c0)])
         if c0<0:
             crho = (abs(c0))**(1/3)
             phase0 = 0
@@ -60,7 +60,7 @@ def solve_cubic(a, b, c, d):
     q = (2*(c3**3)/27) -(c1*c2/3) + c0
 
     # Here is a helper term...
-    print(['VAR is p and type is ...', type(p)])
+    #print(['VAR is p and type is ...', type(p)])
     if abs(p.imag)<1e-6:
         p = p.real
     
@@ -128,7 +128,7 @@ def solve_quad(a,b,c):
         roots.append(-1*c1/2)
         roots.append(-1*c1/2)
         return roots
-    print(['VAR is discrim and type is ...', type(discrim)])
+    #print(['VAR is discrim and type is ...', type(discrim)])
     if (discrim < 8) and (discrim > 0):
         # We should be able to hit it with arcos
         alpha1 = math.acos((c1**2 -4*c0-4)/4)
@@ -147,13 +147,16 @@ def solve_quad(a,b,c):
         roots.append(t2 - (c1/2))
         return roots
     else:
-       #print((c1**2 -4*c0-4)/4)
+        print((c1**2 -4*c0-4)/4)
         alpha1 =cmath.acosh((c1**2 -4*c0-4)/4)
         alpha1/=2
         y1 =cmath.cosh(alpha1)
         t1 = 4**(0.25)*y1
         roots.append(t1-(c1/2))
         roots.append((c0/(roots[0])))
+        print(1,c1,c0)
+        print(roots)
+        print((1/2)*(-c1 + (c1**2 - 4*c0)**0.5),(1/2)*(-c1 - (c1**2 - 4*c0)**0.5))
         return roots
 
         
