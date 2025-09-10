@@ -68,6 +68,7 @@ def solve_quartic(a, b, c, d, e):
     # One of the roots have to be real....
     for root in resolveCubicRoots:
         if abs(root.imag)<(10**(-6)):
+            print(root)
             chosenRoot = root
             break
     

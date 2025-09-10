@@ -59,8 +59,7 @@ def solve_cubic(a, b, c, d):
     q = (2*(c3**3)/27) -(c1*c2/3) + c0
 
     # Here is a helper term...
-    
-    if p<=0:
+    if p<0:
         a = (-2/3)*p*(p*p/9)**(0.25)
         threeTheta = cmath.acos(-q/a)
         theta1 = threeTheta/3
