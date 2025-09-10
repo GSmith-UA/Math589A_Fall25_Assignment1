@@ -46,9 +46,11 @@ def solve_quartic(a, b, c, d, e):
         r1 = quadRoots[0]
         r2 = quadRoots[1]
         multVec = [1,1,1,1]
+        print(type(r1))
         if r1<0:
             multVec[0] = 0+1j
             multVec[1] = multVec[0]
+        print(type(r2))
         if r2<0:
             multVec[2] = 0+1j
             multVec[3] = multVec[2]
@@ -68,8 +70,10 @@ def solve_quartic(a, b, c, d, e):
     # One of the roots have to be real....
    #print(resolveCubicRoots)
     for root in resolveCubicRoots:
-       #print(root)
-        if abs(root.imag)<(10**(-6)):
+       print(root)
+       print(root.imag)
+       print(type(root.imag))
+       if abs(root.imag)<(10**(-9)):
             chosenRoot = root
             break
     
