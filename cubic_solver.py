@@ -61,6 +61,9 @@ def solve_cubic(a, b, c, d):
 
     # Here is a helper term...
     print(['VAR is p and type is ...', type(p)])
+    if abs(p.imag)<1e-6:
+        p = p.real
+    
     if p<0:
         a = (-2/3)*p*(p*p/9)**(0.25)
         threeTheta = cmath.acos(-q/a)

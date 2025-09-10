@@ -46,10 +46,13 @@ def solve_quartic(a, b, c, d, e):
         r1 = quadRoots[0]
         r2 = quadRoots[1]
         multVec = [1,1,1,1]
+        
         print(['VAR is r1and type ', type(r1)])
         if r1<0:
             multVec[0] = 0+1j
             multVec[1] = multVec[0]
+        print(quadRoots)
+        print(r2)
         print(['VAR is r2 and type ', type(r2)])
         if r2<0:
             multVec[2] = 0+1j
