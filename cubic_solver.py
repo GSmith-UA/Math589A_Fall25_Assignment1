@@ -57,7 +57,7 @@ def solve_cubic(a, b, c, d):
     c0 = d/a
     # Now we depress it into t^3 + pt + q
     p = (-1*(c2)**2)/3 + c1
-    q = (2*(c3**3)/27) -(c1*c2/3) + c0
+    q = (2*(c2**3)/27) -(c1*c2/3) + c0
 
     # Here is a helper term...
     #print(['VAR is p and type is ...', type(p)])
