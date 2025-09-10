@@ -97,8 +97,6 @@ def solve_linear(a,b):
 
 def solve_quad(a,b,c):
     roots = []
-    roots.append((1/(2*a))*(-b + (b**2 - 4*a*c)**0.5))
-    roots.append((1/(2*a))*(-b - (b**2 - 4*a*c)**0.5))
     # I guess I have to make these real...
     a = a.real
     b = b.real
