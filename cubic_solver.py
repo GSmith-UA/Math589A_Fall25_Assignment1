@@ -156,7 +156,7 @@ def solve_quad(a,b,c):
         roots.append((c0/(roots[0])))
         print(1,c1,c0)
         print(roots)
-        print((1/2)*(-c1 + (c1**2 - 4*c0)**0.5),(1/2)*(-c1 - (c1**2 - 4*c0)**0.5))
+        print(((1/2)*(-c1 + (c1**2 - 4*c0)**0.5)) - c1/2,((1/2)*(-c1 - (c1**2 - 4*c0)**0.5)) - c1/2)
         return roots
 
         
