@@ -38,7 +38,7 @@ def solve_cubic(a, b, c, d):
             return roots
         else:
             phi = (-1/3)*cmath.pi
-            crho = (math.abs(c0))**(1/3)
+            crho = (abs(c0))**(1/3)
             phase0 = phi
             phase1 = phi + (2/3)*cmath.pi
             phase2 = phi + (4/3)*cmath.pi
