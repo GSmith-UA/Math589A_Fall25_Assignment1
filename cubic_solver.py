@@ -117,6 +117,7 @@ def solve_quad(a,b,c):
     # Now we should have a non-trivial quadratic...
     roots.append((1/(2*a))*(-b + (b**2 - 4*a*c)**0.5))
     roots.append((1/(2*a))*(-b - (b**2 - 4*a*c)**0.5))
+    return roots
     if a != 1:
         # We want to recondition...
         c0 = c/a
