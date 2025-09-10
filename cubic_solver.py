@@ -63,30 +63,77 @@ def solve_cubic(a, b, c, d):
     #print(['VAR is p and type is ...', type(p)])
     if abs(p.imag)<1e-6:
         p = p.real
+    if abs(q.imag)<1e-6:
+        q = q.real
     
-    if p<0:
+    discrim = (q/2)**2 + (p/3)**3
+    
+    if discrim == 0:
+        if p ==0 and q ==0:
+            roots.extend([-c2/3,-c2/3,-c2/3])
+            return roots
+        else:
+            u = (-q/2)**(1/3)
+            roots.extend([-u -c2/3, -u -c2/3, 2*u -c2/3])
+            return roots
+
+    if discrim < 0:
+        # 3 unequal real roots
         a = (-2/3)*p*(p*p/9)**(0.25)
-        threeTheta = cmath.acos(-q/a)
+        threeTheta = math.acos(-q/a)
         theta1 = threeTheta/3
-        t1 = cmath.cos(theta1)*2*(p*p/9)**(0.25)
-        theta2 = theta1 + (2/3)*cmath.pi
-        t2 = cmath.cos(theta2)*2*(p*p/9)**(0.25)
-        theta3 = theta1 - (2/3)*cmath.pi
-        t3 = cmath.cos(theta3)*2*(p*p/9)**(0.25)
+        t1 = math.cos(theta1)*2*(p*p/9)**(0.25)
+        theta2 = theta1 + (2/3)*math.pi
+        t2 = math.cos(theta2)*2*(p*p/9)**(0.25)
+        theta3 = theta1 - (2/3)*math.pi
+        t3 = math.cos(theta3)*2*(p*p/9)**(0.25)
+        roots.extend([t1-c2/3,t2-c2/3,t3-c2/3])
+        return roots
     else:
-        a = (2/3)*p*(p*p/9)**(0.25)
-        threeTheta = cmath.asinh(-q/a)
-        theta1 = threeTheta/3
-        t1 = cmath.sinh(theta1)*2*(p*p/9)**(0.25)
-        theta2 = theta1 + (2/3)*cmath.pi*(0+1j)
-        t2 = cmath.sinh(theta2)*2*(p*p/9)**(0.25)
-        theta3 = theta1 - (2/3)*cmath.pi*(0+1j)
-        t3 = cmath.sinh(theta3)*2*(p*p/9)**(0.25)
+        if abs(p)<1e-6:
+            t = (-q)**(1/3)
+            roots.extend([t-c2/3,t-c2/3,t-c2/3])
+            return roots
+        else:
+            r3 = (p*p/9)**(0.75)
+            arg = (3 * q) / (2 * r3)
     
-    roots.append(t1-c2/3)
-    roots.append(t2-c2/3)
-    roots.append(t3-c2/3)
-    return roots
+            theta = (1/3) * cmath.asinh(arg)
+            r = (p*p/9)**0.25 
+    
+            t = 2 * r * cmath.sinh(theta)
+            roots.append(t-c2/3)
+
+            k2 = 1
+            k1 = c2 + roots[0]
+            k0 = c1 + roots[0] * c2 + roots[0]**2
+            quadRoots = solve_quad(k2,k1,k0)
+            roots.extend([quadRoots[0],quadRoots[1]])
+            return roots
+
+    # if p<0:
+    #     a = (-2/3)*p*(p*p/9)**(0.25)
+    #     threeTheta = cmath.acos(-q/a)
+    #     theta1 = threeTheta/3
+    #     t1 = cmath.cos(theta1)*2*(p*p/9)**(0.25)
+    #     theta2 = theta1 + (2/3)*cmath.pi
+    #     t2 = cmath.cos(theta2)*2*(p*p/9)**(0.25)
+    #     theta3 = theta1 - (2/3)*cmath.pi
+    #     t3 = cmath.cos(theta3)*2*(p*p/9)**(0.25)
+    # else:
+    #     a = (2/3)*p*(p*p/9)**(0.25)
+    #     threeTheta = cmath.asinh(-q/a)
+    #     theta1 = threeTheta/3
+    #     t1 = cmath.sinh(theta1)*2*(p*p/9)**(0.25)
+    #     theta2 = theta1 + (2/3)*cmath.pi*(0+1j)
+    #     t2 = cmath.sinh(theta2)*2*(p*p/9)**(0.25)
+    #     theta3 = theta1 - (2/3)*cmath.pi*(0+1j)
+    #     t3 = cmath.sinh(theta3)*2*(p*p/9)**(0.25)
+    
+    # roots.append(t1-c2/3)
+    # roots.append(t2-c2/3)
+    # roots.append(t3-c2/3)
+    # return roots
     
 
 
@@ -166,6 +213,10 @@ def main():
     tests = [
         (1, 0, 0, -1),     # roots of x^3 - 1 = 0 (1 and two complex cube roots)
         (1, -6, 11, -6),   # roots [1.0, 2.0, 3.0]
+        (1,0,0,0,),
+        (1,3,3,1),
+        (1,0,-3,1),
+        (1,1,1,1)
     ]
     for a, b, c, d in tests:
         roots = solve_cubic(a, b, c, d)

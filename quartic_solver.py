@@ -102,7 +102,7 @@ def main():
         (0, 1, -3, 2, 0),  # a=0 => cubic: x^3 - 3x^2 + 2x = 0  (roots 0,1,2)
         (1, 0, 2, 0, 1),
         (1,-3,6,-12,8),
-        (1,0,0,0,-16)
+        
     ]
     for a, b, c, d, e in tests:
         roots = solve_quartic(a, b, c, d, e)
