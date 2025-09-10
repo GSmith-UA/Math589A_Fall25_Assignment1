@@ -46,15 +46,15 @@ def solve_quartic(a, b, c, d, e):
         r1 = quadRoots[0]
         r2 = quadRoots[1]
         multVec = [1,1,1,1]
-        
+
         #print(['VAR is r1and type ', type(r1)])
-        if r1<0:
+        if r1.imag ==0 and r1.real<0:
             multVec[0] = 0+1j
             multVec[1] = multVec[0]
         #print(quadRoots)
         #print(r2)
         #print(['VAR is r2 and type ', type(r2)])
-        if r2<0:
+        if r2.imag ==0 and r2.real<0:
             multVec[2] = 0+1j
             multVec[3] = multVec[2]
         root1 = (-1)*(r1*r1)**(0.25) - (c3/4)
@@ -101,7 +101,8 @@ def main():
         (1, 0, 1, 0, -1),  # roots of x^4 + x^2 - 1 = 0 (2 real and 2 complex roots)
         (0, 1, -3, 2, 0),  # a=0 => cubic: x^3 - 3x^2 + 2x = 0  (roots 0,1,2)
         (1, 0, 2, 0, 1),
-        (1,-3,6,-12,8)
+        (1,-3,6,-12,8),
+        (1,0,0,0,-16)
     ]
     for a, b, c, d, e in tests:
         roots = solve_quartic(a, b, c, d, e)

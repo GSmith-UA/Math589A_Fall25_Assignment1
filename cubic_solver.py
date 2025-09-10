@@ -101,7 +101,6 @@ def solve_quad(a,b,c):
     a = a.real
     b = b.real
     c = c.real
-   #print(a,b,c)
     if a == 0:
         # This is just a linear problem
         roots = solve_linear(b,c)
@@ -113,9 +112,6 @@ def solve_quad(a,b,c):
         roots.append(linRoots[0])
         return roots
     # Now we should have a non-trivial quadratic...
-    roots.append((1/(2*a))*(-b + (b**2 - 4*a*c)**0.5))
-    roots.append((1/(2*a))*(-b - (b**2 - 4*a*c)**0.5))
-    return roots
     if a != 1:
         # We want to recondition...
         c0 = c/a
@@ -150,16 +146,16 @@ def solve_quad(a,b,c):
         roots.append(t2 - (c1/2))
         return roots
     else:
-        print((c1**2 -4*c0-4)/4)
+        #print((c1**2 -4*c0-4)/4)
         alpha1 =cmath.acosh((c1**2 -4*c0-4)/4)
         alpha1/=2
         y1 =cmath.cosh(alpha1)
         t1 = (4**(0.25))*y1
         roots.append(t1-(c1/2))
         roots.append((c0/(roots[0])))
-        print(1,c1,c0)
-        print(roots)
-        print(((1/2)*(-c1 + (c1**2 - 4*c0)**0.5)) - c1/2,((1/2)*(-c1 - (c1**2 - 4*c0)**0.5)) - c1/2)
+        # print(1,c1,c0)
+        # print(roots)
+        # print(((1/2)*(-c1 + (c1**2 - 4*c0)**0.5)) - c1/2,((1/2)*(-c1 - (c1**2 - 4*c0)**0.5)) - c1/2)
         return roots
 
         
