@@ -92,6 +92,11 @@ def solve_linear(a,b):
 
 def solve_quad(a,b,c):
     roots = []
+    # I guess I have to make these real...
+    a = a.real
+    b = b.real
+    c = c.real
+   #print(a,b,c)
     if a == 0:
         # This is just a linear problem
         roots = solve_linear(b,c)
@@ -111,14 +116,12 @@ def solve_quad(a,b,c):
         c0 = c
         c1 = b
         c2 = a
-
+   #print(a,b,c)
     discrim = c1**2 - 4*c0
-
     if discrim == 0:
         roots.append(-1*c1/2)
         roots.append(-1*c1/2)
         return roots
-    
     if (discrim < 8)&( discrim >0):
         # We should be able to hit it with arcos
         alpha1 = math.acos((c1**2 -4*c0-4)/4)
@@ -137,9 +140,10 @@ def solve_quad(a,b,c):
         roots.append(t2 - (c1/2))
         return roots
     else:
-        alpha1 = math.acosh((c1**2 -4*c0-4)/4)
+       #print((c1**2 -4*c0-4)/4)
+        alpha1 =cmath.acosh((c1**2 -4*c0-4)/4)
         alpha1/=2
-        y1 = math.cosh(alpha1)
+        y1 =cmath.cosh(alpha1)
         t1 = 4**(0.25)*y1
         roots.append(t1-(c1/2))
         roots.append((c0/(roots[0])))

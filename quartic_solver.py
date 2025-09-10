@@ -66,9 +66,10 @@ def solve_quartic(a, b, c, d, e):
     resolveCoeff = [8,8*q,(2*q*q - 8*s),-1*r*r]
     resolveCubicRoots = cubic_solver.solve_cubic(resolveCoeff[0],resolveCoeff[1],resolveCoeff[2],resolveCoeff[3])
     # One of the roots have to be real....
+   #print(resolveCubicRoots)
     for root in resolveCubicRoots:
+       #print(root)
         if abs(root.imag)<(10**(-6)):
-            print(root)
             chosenRoot = root
             break
     
@@ -92,6 +93,8 @@ def main():
         (1, 0, 0, 0, -1),  # roots of x^4 - 1 = 0 (2 real and 2 complex roots)
         (1, 0, 1, 0, -1),  # roots of x^4 + x^2 - 1 = 0 (2 real and 2 complex roots)
         (0, 1, -3, 2, 0),  # a=0 => cubic: x^3 - 3x^2 + 2x = 0  (roots 0,1,2)
+        (1, 0, 2, 0, 1),
+        (1,-3,6,-12,8)
     ]
     for a, b, c, d, e in tests:
         roots = solve_quartic(a, b, c, d, e)
