@@ -122,7 +122,7 @@ def solve_quad(a,b,c):
         roots.append(-1*c1/2)
         roots.append(-1*c1/2)
         return roots
-    if (discrim < 8)&( discrim >0):
+    if (discrim < 8) and (discrim > 0):
         # We should be able to hit it with arcos
         alpha1 = math.acos((c1**2 -4*c0-4)/4)
         alpha2 = 2*math.pi - alpha1
