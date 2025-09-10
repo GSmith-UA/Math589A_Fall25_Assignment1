@@ -26,7 +26,7 @@ def solve_cubic(a, b, c, d):
         # This is really a roots of unity problem...
         c3 = 1
         c0 = d/a
-        print(type(c0))
+        print(['VAR is c0 and type is...', type(c0)])
         if c0<0:
             crho = (abs(c0))**(1/3)
             phase0 = 0
@@ -60,7 +60,7 @@ def solve_cubic(a, b, c, d):
     q = (2*(c3**3)/27) -(c1*c2/3) + c0
 
     # Here is a helper term...
-    print(type(p))
+    print(['VAR is p and type is ...', type(p)])
     if p<0:
         a = (-2/3)*p*(p*p/9)**(0.25)
         threeTheta = cmath.acos(-q/a)
@@ -124,7 +124,7 @@ def solve_quad(a,b,c):
         roots.append(-1*c1/2)
         roots.append(-1*c1/2)
         return roots
-    print(type(discrim))
+    print(['VAR is discrim and type is ...', type(discrim)])
     if (discrim < 8) and (discrim > 0):
         # We should be able to hit it with arcos
         alpha1 = math.acos((c1**2 -4*c0-4)/4)

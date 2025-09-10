@@ -46,11 +46,11 @@ def solve_quartic(a, b, c, d, e):
         r1 = quadRoots[0]
         r2 = quadRoots[1]
         multVec = [1,1,1,1]
-        print(type(r1))
+        print(['VAR is r1and type ', type(r1)])
         if r1<0:
             multVec[0] = 0+1j
             multVec[1] = multVec[0]
-        print(type(r2))
+        print(['VAR is r2 and type ', type(r2)])
         if r2<0:
             multVec[2] = 0+1j
             multVec[3] = multVec[2]
@@ -72,7 +72,7 @@ def solve_quartic(a, b, c, d, e):
     for root in resolveCubicRoots:
        print(root)
        print(root.imag)
-       print(type(root.imag))
+       print(['VAR is root.imag and type is...', type(root.imag)])
        if abs(root.imag)<(10**(-9)):
             chosenRoot = root
             break
