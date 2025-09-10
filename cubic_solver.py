@@ -19,7 +19,7 @@ def solve_cubic(a, b, c, d):
         # This is a quadratic problem...
         # I will solve it for you though...
         print('User has entered a degenerate cubic...')
-        roots = quadRoots(b,c,d)
+        roots = solve_quad(b,c,d)
         return roots
 
     if (b == 0) & (c == 0):
@@ -27,7 +27,7 @@ def solve_cubic(a, b, c, d):
         c3 = 1
         c0 = d/a
         if c0<0:
-            crho = (math.abs(c0))**(1/3)
+            crho = (abs(c0))**(1/3)
             phase0 = 0
             phase1 = (2/3)*math.pi
             phase2 = (4/3)*math.pi
@@ -108,6 +108,10 @@ def solve_quad(a,b,c):
         c0 = c/a
         c1 = b/a
         c2 = 1
+    else:
+        c0 = c
+        c1 = b
+        c2 = a
 
     discrim = c1**2 - 4*c0
 
@@ -116,7 +120,7 @@ def solve_quad(a,b,c):
         roots.append(-1*c1/2)
         return roots
     
-    if discrim < 8 & discrim >0:
+    if (discrim < 8)&( discrim >0):
         # We should be able to hit it with arcos
         alpha1 = math.acos((c1**2 -4*c0-4)/4)
         alpha2 = 2*math.pi - alpha1

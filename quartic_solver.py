@@ -17,7 +17,9 @@ def solve_quartic(a, b, c, d, e):
         cubicRoots = cubic_solver.solve_cubic(a,b,c,d)
         roots.append(cubicRoots[0])
         roots.append(cubicRoots[1])
-        roots.append(cubicRoots[2])
+        if len(cubicRoots) == 3:
+            roots.append(cubicRoots[2])
+        
         return roots
     
     if a == 0:
